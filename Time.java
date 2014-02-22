@@ -14,7 +14,7 @@ public class Time {
 
 	//CAMPI
 	private Timer timer;
-    private int gameDuration = 180; // in seconds
+    private int gameDuration = 60; // in seconds
 
     //COSTRUTTORE
     public Time(ActionListener a) {

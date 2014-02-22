@@ -9,39 +9,54 @@ import java.lang.*;
 public class Board {
 
 	//CAMPI
-	private final int size = 16;
-	private Random r = new Random();
-
-	private char[][] chars;
+	private Letter[][] letters;
+	private Vector<Letter> items;
 
 
 	//COSTRUTTORE
 	public Board() {
-		chars = new char[4][4];
+		items = new Vector<Letter>();
+
+		letters = new Letter[4][4];
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 4; j++) {
-				char c = (char)(r.nextInt(26) + 'a');
-				chars[i][j] = c;
+				Letter l = new Letter();
+				letters[i][j] = l;
+				items.addElement(l);
 			}
 		}
+
+		for (int i = 0; i < letters.length; i++) {
+	      	for (int j = 0; j < letters[i].length; j++) {
+	        	if (i > 0)
+	        		letters[i][j].addNeighbor(letters[i-1][j]);
+	        	if (i < letters.length-1)
+	          		letters[i][j].addNeighbor(letters[i+1][j]);
+	    	    if (j > 0)
+	        		letters[i][j].addNeighbor(letters[i][j-1]);
+	        	if (j < letters[i].length-1)
+	        		letters[i][j].addNeighbor(letters[i][j+1]);
+	      	}
+	    }
 	}
 
 	//METODI
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("+---+---+---+---+\n");
-		sb.append("| "+Character.toString(chars[0][0]).toUpperCase()+" | "+Character.toString(chars[0][1]).toUpperCase()+" | "+Character.toString(chars[0][2]).toUpperCase()+" | "+Character.toString(chars[0][3]).toUpperCase()+" |\n");
+		sb.append("| "+letters[0][0].toStringU()+" | "+letters[0][1].toStringU()+" | "+letters[0][2].toStringU()+" | "+letters[0][3].toStringU()+" |\n");
 		sb.append("+---+---+---+---+\n");
-		sb.append("| "+Character.toString(chars[1][0]).toUpperCase()+" | "+Character.toString(chars[1][1]).toUpperCase()+" | "+Character.toString(chars[1][2]).toUpperCase()+" | "+Character.toString(chars[1][3]).toUpperCase()+" |\n");
+		sb.append("| "+letters[1][0].toStringU()+" | "+letters[1][1].toStringU()+" | "+letters[1][2].toStringU()+" | "+letters[1][3].toStringU()+" |\n");
 		sb.append("+---+---+---+---+\n");
-		sb.append("| "+Character.toString(chars[2][0]).toUpperCase()+" | "+Character.toString(chars[2][1]).toUpperCase()+" | "+Character.toString(chars[2][2]).toUpperCase()+" | "+Character.toString(chars[2][3]).toUpperCase()+" |\n");
+		sb.append("| "+letters[2][0].toStringU()+" | "+letters[2][1].toStringU()+" | "+letters[2][2].toStringU()+" | "+letters[2][3].toStringU()+" |\n");
 		sb.append("+---+---+---+---+\n");
-		sb.append("| "+Character.toString(chars[3][0]).toUpperCase()+" | "+Character.toString(chars[3][1]).toUpperCase()+" | "+Character.toString(chars[3][2]).toUpperCase()+" | "+Character.toString(chars[3][3]).toUpperCase()+" |\n");
+		sb.append("| "+letters[3][0].toStringU()+" | "+letters[3][1].toStringU()+" | "+letters[3][2].toStringU()+" | "+letters[3][3].toStringU()+" |\n");
 		sb.append("+---+---+---+---+\n");
 		return sb.toString();
 	}
 
-	public char[][] getChars() {
-		return chars;
+	public Vector<Letter> getLetters() {
+		return items;
 	}
+
 }

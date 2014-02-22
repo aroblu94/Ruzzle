@@ -6,12 +6,18 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		ActionListener a = ;
+		ActionListener a = null;
 		Board b = new Board();
+		Search s = new Search(b);
+		char[][] c = b.getChars();
+		s.searchPossibleWords(c);
 		Time t = new Time(a);
 
-		System.out.println(c);
+		System.out.println(b);
 		System.out.println();
 		System.out.println("Tempo rimanente: " + t);
+
+		System.out.println();
+		System.out.println(System.currentTimeMillis());
 	}
 }

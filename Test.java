@@ -1,4 +1,5 @@
 import java.lang.*;
+import java.util.*;
 
 /*
  * This is only a test class...
@@ -7,21 +8,22 @@ import java.lang.*;
 public class Test {
 	public static void main(String[] args) {
 
-		Board b = new Board();
-		Search s = new Search(b);
-		char[][] c = b.getChars();
-		s.searchPossibleWords(c);
+		Board board = new Board();
+		Dictionary dic = new Dictionary();
+		Search search = new Search(board, dic);
 
-		System.out.println(s.board());
+		search.searchAllPossibleWords();
+
+		System.out.println(board);
 		System.out.println();
 
-		System.out.println("Numero parole nel dizionario: " + s.getDictionary().size());
+		System.out.println("Numero parole nel dizionario: " + dic.get().size());
 		System.out.println();
 
-		System.out.println("Numero parole possibili: " + s.getPossibleWords().size());
+		System.out.println("Numero parole possibili: " + search.getPossibleWords().size());
 		System.out.println();
 
-		System.out.println("Parole possibili: \n" + s.possibleWords());
+		System.out.println("Parole possibili: \n" + search.possibleWords());
 		System.out.println();
 	}
 }
