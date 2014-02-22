@@ -7,7 +7,10 @@ import java.lang.*;
 public class Test {
 	public static void main(String[] args) {
 
-		Search s = new Search();
+		Board b = new Board();
+		Search s = new Search(b);
+		char[][] c = b.getChars();
+		s.searchPossibleWords(c);
 
 		System.out.println(s.board());
 		System.out.println();
@@ -18,7 +21,7 @@ public class Test {
 		System.out.println("Numero parole possibili: " + s.getPossibleWords().size());
 		System.out.println();
 
-		System.out.println("Parone possibili: \n" + s.possibleWords());
+		System.out.println("Parole possibili: \n" + s.possibleWords());
 		System.out.println();
 	}
 }
