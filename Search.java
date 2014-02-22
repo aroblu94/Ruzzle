@@ -3,15 +3,12 @@ import java.io.*;
 import java.util.*;
 
 	/*
-	 * Target: - create a Vector<String> dizionario
+	 * Target: - create a NavigableSet<String> dizionario
 	 * 			 and fill it with words read from a source file
 	 *		   - create an engine that finds all the possible
 	 *			 words can be created using the 16 chars from the board
 	 *			 comparing them with the ones saved in "dizionario"
 	 *			 and save them in a vector (trovate)
-	 *
-	 * Actually it add elements to dizionario and dunno why...
-	 *
 	 */
 
 public class Search {
@@ -57,27 +54,12 @@ public class Search {
     }
 
 
-		/*String found = "";
-		for(String s : dizionario) {
-			int length = s.length();
-			for(int i = 0; i<length; i++) {
-				for (int j = 0; j<16; j++) {
-					if(Character.toString(s.charAt(i))==board.getVector().elementAt(j))
-						found = found + Character.toString(s.charAt(i));
-				}
-			}
-		}
-		trovate.addElement(found);
-	}*/
-
-	public void solve(char[][] m, int i, int j, String prefix, Vector<String> trovate) {
-        assert m != null;
-        assert trovate != null;
+	public void solve(char[][] m, int i, int j, String p, Vector<String> trovate) {
 
         for (int i1 = Math.max(0, i - 1); i1 < Math.min(m.length, i + 2); i1++) {
             for (int j1 = Math.max(0, j - 1); j1 < Math.min(m[0].length, j + 2); j1++) {
                 if (i1 != i || j1 != j) {
-                    String word = prefix+ m[i1][j1];
+                    String word = p + m[i1][j1];
 
                     if (dizionario.contains(word)) {
                     	boolean presente = false;

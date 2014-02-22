@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		ActionListener a = ;
-		Board c = new Board();
+		Board b = new Board();
 		Time t = new Time(a);
 
 		System.out.println(c);
