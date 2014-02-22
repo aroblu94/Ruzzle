@@ -19,7 +19,6 @@ public class Search {
 	//CAMPI
 	private File source;
 	private Scanner in;
-	private Scanner line;
 	private Board board;
 	private Vector<String> dizionario;
 	private Vector<String> trovate;
@@ -27,12 +26,15 @@ public class Search {
 	//COSTRUTTORE
 	public Search() {
 		board = new Board();
+		dizionario = new Vector<String>();
+		trovate = new Vector<String>();
+		source = new File("dizionario.txt");
 		try {
-			source = new File("dizionario.txt");
 			in = new Scanner(source);
-			line = new Scanner(source);
-			dizionario = new Vector<String>();
-			trovate = new Vector<String>();
+			while(in.hasNextLine()) {
+				String word = in.nextLine();
+				dizionario.addElement(word);	//creating dictionary...
+			}	
 		}
 		catch(FileNotFoundException e) {
 			System.out.println("File dizionario.txt non trovato, arresto. ");
@@ -41,12 +43,6 @@ public class Search {
 	}
 
 	//METODI
-	public void createDictionary() {
-		while(line.hasNextLine()) {
-			String word = in.next();
-			dizionario.addElement(word);
-		}
-	}
 
 	public void searchPossibleWords() {
 		String found = "";
