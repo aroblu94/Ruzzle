@@ -26,16 +26,7 @@ public class Board {
 			}
 		}
 	}
-
-	/*public Board(Letter[][] lettere) {
-		letters = lettere;
-		chars = new char[4][4];
-		for(int i = 0; i < 4; i++) {
-			for(int j = 0; j < 4; j++) {
-				chars[i][j] = lettere[i][j].get();
-			}
-		}
-	}*/
+	
 
 	//METODI
 	public String toString() {
