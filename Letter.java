@@ -7,7 +7,7 @@ public class Letter {
 	private Random r = new Random();
 	private char c;
 	private Collection<Letter> neighbors = new ArrayList<Letter>();
-	boolean visited;
+	private boolean visited;
 
 	//COSTRUTTORE
 	public Letter() {
@@ -19,8 +19,8 @@ public class Letter {
 		return Character.toString(c).toUpperCase();
 	}
 
-	public void visited() {
-		visited = true;
+	public void visited(boolean b) {
+		visited = b;
 	}
 
 	public boolean isVisited() {

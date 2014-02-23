@@ -20,6 +20,12 @@ public class Test {
 		System.out.println("Numero parole nel dizionario: " + dic.get().size());
 		System.out.println();
 
+		System.out.println("Numero di tutte le parole possibili: " + search.searchAllPossibleWords().size());
+		System.out.println();
+
+		//System.out.println("Tutte le parole possibili: " + search.searchAllPossibleWords());
+		//System.out.println();
+
 		System.out.println("Numero parole possibili: " + search.getPossibleWords().size());
 		System.out.println();
 

@@ -22,24 +22,24 @@ public class Search {
     public ArrayList<String> searchAllPossibleWords() {	
     	allPossibleWords = new ArrayList<String>();
 		for (Letter l : board.getLetters()) {       
-		    dfs(l, "");
+			create(l, "");
 		}
 		return allPossibleWords;
 	}
 	
 
-	private void dfs(Letter l, String currentWord) {
+	private void create(Letter l, String currentWord) {
 	    String currentLetter = l.toString();
 	    currentWord = currentWord + currentLetter;
 	    allPossibleWords.add(currentWord);
-	    l.visited = true;
+	    l.visited(true);
 	    Iterable<Letter> letters = l.getNeighbors();
 	    for (Letter x : letters) {
-	        if (x.isVisited() != true) {
-	        	dfs(x,currentWord);
+	        if (!x.isVisited()) {
+	        	create(x,currentWord);
 	        }     
 	    }
-	    l.visited = false;
+	    l.visited(false);
 	}
 
 
