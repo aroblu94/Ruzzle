@@ -9,8 +9,14 @@ public class Letter {
 	private boolean visited;
 
 	//COSTRUTTORE
+	/*public Letter(char c) {
+		this.c = c; //(char)(r.nextInt(26) + 'a');
+		visited = false;
+	}*/
+
 	public Letter() {
 		c = (char)(r.nextInt(26) + 'a');
+		visited = false;
 	}
 
 	//METODI

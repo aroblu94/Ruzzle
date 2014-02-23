@@ -11,6 +11,7 @@ public class Board {
 	//CAMPI
 	private Letter[][] letters;
 	private char[][] chars;
+	private int nome;
 
 
 	//COSTRUTTORE
@@ -25,6 +26,16 @@ public class Board {
 			}
 		}
 	}
+
+	/*public Board(Letter[][] lettere) {
+		letters = lettere;
+		chars = new char[4][4];
+		for(int i = 0; i < 4; i++) {
+			for(int j = 0; j < 4; j++) {
+				chars[i][j] = lettere[i][j].get();
+			}
+		}
+	}*/
 
 	//METODI
 	public String toString() {
@@ -43,5 +54,9 @@ public class Board {
 
 	public char[][] getChars() {
 		return chars;
+	}
+
+	public Letter[][] getLetters() {
+		return letters;
 	}
 }

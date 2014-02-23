@@ -2,6 +2,13 @@ import java.lang.*;
 import java.io.*;
 import java.util.*;
 
+	/*
+	 * It could be possible to read existing words from
+	 * the dictionary file on the current pc
+	 * changing the File f to "/usr/share/dict/words".
+	 *
+	 */
+
 public class Dictionary {
 
 	//CAMPI
@@ -12,7 +19,7 @@ public class Dictionary {
 	//COSTRUTTORE
 	public Dictionary() {
 		dizionario = new TreeSet<String>();
-		File f = new File("dizionario.txt");	// /usr/share/dict/words
+		File f = new File("wordlist.txt");	
 		try {
 			in = new Scanner(f);
 			while (in.hasNextLine()) {
