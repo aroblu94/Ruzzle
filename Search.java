@@ -19,26 +19,14 @@ public class Search {
 	//CAMPI
 	private Scanner in;
 	private Board board;
-	private NavigableSet<String> dizionario;
+	private Dictionary dizionario;
 	private Vector<String> trovate;
 
 	//COSTRUTTORE
-	public Search(Board b) {
+	public Search(Board b, Dictionary d) {
 		board = b;
-		dizionario = new TreeSet<String>();
+		dizionario = d;
 		trovate = new Vector<String>();
-		File f = new File("dizionario.txt");
-		try {
-			in = new Scanner(f);
-			while (in.hasNextLine()) {
-				String word = in.nextLine();
-                dizionario.add(word);	//creating dictionary...
-			}	
-		}
-		catch(FileNotFoundException e) {
-			System.out.println("File dizionario.txt non trovato, arresto. ");
-		}
-
 	}
 
 	//METODI
@@ -50,36 +38,23 @@ public class Search {
         trovate = new Vector<String>();
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[0].length; j++) {
-                solve(m, i, j, m[i][j] + "", trovate);
+                solve(m, i, j, m[i][j] + "");
             }
         }
         return trovate;
     }
 
 
-		/*String found = "";
-		for(String s : dizionario) {
-			int length = s.length();
-			for(int i = 0; i<length; i++) {
-				for (int j = 0; j<16; j++) {
-					if(Character.toString(s.charAt(i))==board.getVector().elementAt(j))
-						found = found + Character.toString(s.charAt(i));
-				}
-			}
-		}
-		trovate.addElement(found);
-	}*/
-
-	public void solve(char[][] m, int i, int j, String prefix, Vector<String> trovate) {
+	public void solve(char[][] m, int i, int j, String prefix) {
         assert m != null;
         assert trovate != null;
 
         for (int i1 = Math.max(0, i - 1); i1 < Math.min(m.length, i + 2); i1++) {
             for (int j1 = Math.max(0, j - 1); j1 < Math.min(m[0].length, j + 2); j1++) {
                 if (i1 != i || j1 != j) {
-                    String word = prefix+ m[i1][j1];
+                    String word = prefix + m[i1][j1];
 
-                    if (dizionario.contains(word)) {
+                    if (dizionario.get().contains(word)) {
                     	boolean presente = false;
                     	for (String s : trovate) {
                     		if(s.equals(word)) {
@@ -93,8 +68,8 @@ public class Search {
                         	trovate.addElement(word);
                     }
 
-                    if (dizionario.subSet(word, word + Character.MAX_VALUE).size() > 0) {
-                        solve(m, i1, j1, word, trovate);
+                    if (dizionario.get().subSet(word, word + Character.MAX_VALUE).size() > 0) {
+                        solve(m, i1, j1, word);
                     }
                 }
             }
@@ -114,9 +89,6 @@ public class Search {
 		return found;
 	}
 
-	public NavigableSet<String> getDictionary() {
-		return dizionario;
-	}
 
 	public Vector<String> getPossibleWords() {
 		return trovate;
