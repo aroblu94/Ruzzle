@@ -35,9 +35,11 @@ public class Search {
 		//chosing the starting letter ...
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 4; j++) {
-				m[i][j].visited(true); //once used becames "visited"
+				//once used becomes "visited" ...
+				m[i][j].visited(true); 
 				solve(m, i, j, Character.toString(m[i][j].get()));
-				for(int x = 0; x < 4; x++) { //once "solve" finishes all comes back to "unvisited"
+				//once "solve" finishes all comes back to "unvisited" ...
+				for(int x = 0; x < 4; x++) { 
 					for(int y = 0; y < 4; y++) {
 						m[x][y].visited(false); 
 					}
@@ -54,7 +56,8 @@ public class Search {
 			for (int j1 = Math.max(0, j - 1); j1 < Math.min(4, j + 2); j1++) {
 				if ((i1 != i || j1 != j) && !(m[i1][j1].isVisited())) {
 					String word = prefix + m[i1][j1].get();
-					m[i1][j1].visited(true); //once used becames "visited"
+					//once used becomes "visited" ...
+					m[i1][j1].visited(true); 
 					if (dizionario.get().contains(word)) {
 						boolean presente = false;
 						for (String s : trovate) {
