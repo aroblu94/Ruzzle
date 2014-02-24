@@ -19,7 +19,7 @@ public class Dictionary {
 	//COSTRUTTORE
 	public Dictionary() {
 		dizionario = new TreeSet<String>();
-		File f = new File("/usr/share/dict/italian");	
+		File f = new File("/usr/share/dict/italian");	//testing with the italian dictionary ...
 		try {
 			in = new Scanner(f);
 			while (in.hasNextLine()) {
@@ -28,7 +28,7 @@ public class Dictionary {
 			}	
 		}
 		catch(FileNotFoundException e) {
-			System.out.println("File dizionario.txt non trovato, arresto. ");
+			System.out.println("Error, dictionary not found. ");
 		}
 	}
 
