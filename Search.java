@@ -8,8 +8,7 @@ import java.util.*;
 	 *			comparing them with the ones saved in "dizionario"
 	 *			and save them in a vector (trovate)
 	 *
-	 * BUG:		engine doesn't keep track of the used letters
-	 *			when building a word.	
+	 * BUG:		engine doesn't find alla possible words...	
 	 *
 	 */
 
