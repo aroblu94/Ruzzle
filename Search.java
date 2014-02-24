@@ -31,16 +31,17 @@ public class Search {
 	//METODI
 
 	public Vector<String> searchPossibleWords(Letter[][] m) {
-		if (m == null)
-			throw new NullPointerException("La matrice non può essere vuota ");
 		trovate = new Vector<String>();
 		//chosing the starting letter ...
-		for(int i = 0; i < m.length; i++) {
-			for(int j = 0; j < m[0].length; j++) {
-				//if(!(m[i][j].isVisited())) {
-					solve(m, i, j, m[i][j].get() + "");
-					//m[i][j].visited(true);
-				//}
+		for(int i = 0; i < 4; i++) {
+			for(int j = 0; j < 4; j++) {
+				m[i][j].visited(true); //once used becames "visited"
+				solve(m, i, j, Character.toString(m[i][j].get()));
+				for(int x = 0; x < 4; x++) { //once "solve" finishes all comes back to "unvisited"
+					for(int y = 0; y < 4; y++) {
+						m[x][y].visited(false); 
+					}
+				}
 			}
 		}
 		return trovate;
@@ -49,11 +50,11 @@ public class Search {
 
 	public void solve(Letter[][] m, int i, int j, String prefix) {
 
-		for (int i1 = Math.max(0, i - 1); i1 < Math.min(m.length, i + 2); i1++) {
-			for (int j1 = Math.max(0, j - 1); j1 < Math.min(m[0].length, j + 2); j1++) {
-				if (i1 != i || j1 != j) { //&& !(m[i1][j1].isVisited())) {
+		for (int i1 = Math.max(0, i - 1); i1 < Math.min(4, i + 2); i1++) {
+			for (int j1 = Math.max(0, j - 1); j1 < Math.min(4, j + 2); j1++) {
+				if ((i1 != i || j1 != j) && !(m[i1][j1].isVisited())) {
 					String word = prefix + m[i1][j1].get();
-					//m[i1][j1].visited(true);
+					m[i1][j1].visited(true); //once used becames "visited"
 					if (dizionario.get().contains(word)) {
 						boolean presente = false;
 						for (String s : trovate) {
@@ -68,9 +69,8 @@ public class Search {
 							trovate.addElement(word);
 					}
 
-					if (dizionario.get().subSet(word, word + Character.MAX_VALUE).size() > 0) {
+					if (dizionario.get().subSet(word, word + Character.MAX_VALUE).size() > 0)
 						solve(m, i1, j1, word);
-					}
 				}
 			}
 		} 

@@ -19,7 +19,7 @@ public class Dictionary {
 	//COSTRUTTORE
 	public Dictionary() {
 		dizionario = new TreeSet<String>();
-		File f = new File("wordlist.txt");	
+		File f = new File("/usr/share/dict/italian");	
 		try {
 			in = new Scanner(f);
 			while (in.hasNextLine()) {
