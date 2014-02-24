@@ -1,6 +1,3 @@
-import javax.swing.Timer;
-import java.awt.event.*;
-
     /*
      * Target: create a 3 mins timer
      * and print it into the terminal
@@ -9,24 +6,20 @@ import java.awt.event.*;
      * so I started developing the other classes.
      *
      */
-    
+
 public class Time {
-
-	//CAMPI
-	private Timer timer;
-    private int gameDuration = 180; // in seconds
-    //private TimerTask task;
-
-    //COSTRUTTORE
-    public Time(ActionListener a) {
-    	timer = new Timer(1000,a);
-    }
-
-    //METODI
-    public void run() {
-    	for(int i = 1; i<=gameDuration; i++) {
-    		System.out.println(timer);
-    	}
-    }
-
+	public static void main(String[] args)throws Exception {
+	System.out.println("");
+	System.out.print("03:00");
+	System.out.print("\r");
+	for(int i=2; i>=0; i--)
+		for(int j=59; j>=0; j--){
+			Thread.sleep(1000);
+			if(j>9)
+			System.out.print("0"+i+":"+j);
+			else
+			System.out.print("0"+i+":0"+j);
+			System.out.print("\r");
+		}	
+	}
 }
